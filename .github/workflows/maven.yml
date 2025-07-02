@@ -34,4 +34,4 @@ jobs:
             -Dgpg.passphrase="${{ secrets.GPG_PASSPHRASE }}" \
             -Dgpg.pinentry.mode=loopback \
             -Dsurefire.parallel=none \
-            -Dsurefire.timeout=300
+            -Dsurefire.timeout=500

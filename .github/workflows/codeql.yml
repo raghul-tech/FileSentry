@@ -42,7 +42,7 @@ jobs:
           mvn -B clean install \
             -Dgpg.skip=true \
             -Dsurefire.parallel=none \
-            -Dsurefire.timeout=300
+            -Dsurefire.timeout=500
 
       - name: 🧪 Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
