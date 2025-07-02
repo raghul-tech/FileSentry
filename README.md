@@ -244,6 +244,7 @@ java -cp .;filesentry-1.0.0.jar ExampleFileWatcher
 * View all releases on the [Releases Page.](https://github.com/raghul-tech/FileSentry/releases)
 * For a detailed log of all changes, refer to the [CHANGELOG.md](CHANGELOG.md) file.
 
+---
 
 ## 🤝 Contributing
 * We welcome contributions of all kinds:
