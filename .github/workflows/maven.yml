@@ -11,16 +11,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: 📥 Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up JDK
+      - name: ☕ Set up JDK
         uses: actions/setup-java@v3
         with:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Import GPG key
+      - name: 🔐 Import GPG key
         run: |
           echo "$GPG_PRIVATE_KEY" | gpg --batch --import
           echo "allow-loopback-pinentry" >> ~/.gnupg/gpg-agent.conf
@@ -28,5 +28,10 @@ jobs:
         env:
           GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
 
-      - name: Build with Maven (GPG Enabled)
-        run: mvn -B clean install -Dgpg.passphrase="${{ secrets.GPG_PASSPHRASE }}" -Dgpg.pinentry.mode=loopback
+      - name: 🔨 Build with Maven (GPG Enabled, single-threaded, extended timeout)
+        run: |
+          mvn -B clean install \
+            -Dgpg.passphrase="${{ secrets.GPG_PASSPHRASE }}" \
+            -Dgpg.pinentry.mode=loopback \
+            -Dsurefire.parallel=none \
+            -Dsurefire.timeout=300
